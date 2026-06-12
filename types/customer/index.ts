@@ -114,6 +114,7 @@ export interface CustomerBooking {
   customerAbsentAt?: string | null;
   gracePeriodEndsAt?: string | null;
   noShowRefundAmount?: number | null;
+  assignedStaffId?: number | null;
 
   // Completion verification (OTP-based)
   beforePhotoUrl?: string | null;
@@ -188,6 +189,8 @@ export interface Address {
   state: string;
   zipCode: string;
   isDefault?: boolean;
+  latitude?: number | null;
+  longitude?: number | null;
 }
 
 /**

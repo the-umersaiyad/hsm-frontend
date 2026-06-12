@@ -49,7 +49,7 @@ export default function AdminFraudAlertsPage() {
 
   const { data: flags = [], isLoading, refetch } = useQuery({
     queryKey: ["admin_fraud_flags"],
-    queryFn: async () => {
+    queryFn: async (): Promise<FraudFlag[]> => {
       const response = await api.get<any>("/admin/fraud-flags");
       // Backend returns { flags: [...], pagination: {...} }
       return response.flags || response || [];
