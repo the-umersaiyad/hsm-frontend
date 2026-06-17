@@ -616,7 +616,7 @@ export function ServiceAreaDrawer({
               : turf.polygon((existing.geometry as GeoJSON.Polygon).coordinates);
 
             const intersection = turf.intersect(
-              turf.featureCollection([newZoneFeature, existingFeature])
+              turf.featureCollection([newZoneFeature, existingFeature] as any[])
             );
             if (intersection) {
               toast.error(`Zone intersects with existing zone "${existing.name}". Zones cannot overlap.`);

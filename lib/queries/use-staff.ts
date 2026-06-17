@@ -27,6 +27,14 @@ export interface StaffBooking {
   staff_fixed_amount?: number | null;
   staff_earning?: number | null;
   assignedAt?: string;
+  customerLat?: number;
+  customerLng?: number;
+  customerAddress?: string;
+  arrivedAt?: string | null;
+  travelingAt?: string | null;
+  customerAbsentAt?: string | null;
+  absentCount?: number | null;
+  absent_count?: number | null;
 }
 
 export interface StaffEarning {
