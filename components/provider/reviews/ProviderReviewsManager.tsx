@@ -47,7 +47,7 @@ export function ProviderReviewsManager({ businessId }: ProviderReviewsManagerPro
 
   const getServiceName = (serviceId: number | string) => {
     const service = services.find((s: any) => s.id == serviceId);
-    return service?.title || service?.name || `Service ${serviceId}`;
+    return (service as any)?.title || service?.name || `Service ${serviceId}`;
   };
 
   const renderStars = (rating: number, size: "sm" | "md" = "md") => {
