@@ -19,3 +19,6 @@ export { AdminServicesTableSkeleton } from "./AdminServicesTableSkeleton";
 export { AdminProviderSubscriptionsSkeleton } from "./AdminProviderSubscriptionsSkeleton";
 export { AdminSubscriptionPlansSkeleton } from "./AdminSubscriptionPlansSkeleton";
 export { AdminCronJobsSkeleton } from "./AdminCronJobsSkeleton";
+export { AdminSupportSkeleton } from "./AdminSupportSkeleton";
+export { AdminMapSkeleton, AdminServiceAreasSkeleton, AdminLiveTrackingSkeleton, AdminCoverageAnalyticsSkeleton } from "./AdminMapSkeleton";
+export { AdminTableSkeleton, AdminFraudAlertsSkeleton, AdminLocationAuditSkeleton } from "./AdminTableBasedSkeleton";

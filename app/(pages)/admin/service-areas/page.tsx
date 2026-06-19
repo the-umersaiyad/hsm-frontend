@@ -31,6 +31,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { cn } from "@/lib/utils";
+import { AdminServiceAreasSkeleton, AdminLiveTrackingSkeleton } from "@/components/admin/skeletons";
 
 // ─── Service Areas Types & Components ────────────────────────────────────────
 
@@ -230,6 +231,10 @@ function LiveTrackingSection() {
     return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
   };
 
+  if (isLoading) {
+    return <AdminLiveTrackingSkeleton />;
+  }
+
   return (
     <div className="space-y-4">
       <div className="flex items-center justify-between">
@@ -335,11 +340,7 @@ function LiveTrackingSection() {
               </CardTitle>
             </CardHeader>
             <CardContent className="space-y-3 min-h-[500px] lg:min-h-[600px] h-[calc(100vh-300px)] overflow-y-auto">
-              {isLoading ? (
-                <div className="flex items-center justify-center py-8">
-                  <Loader2 className="h-6 w-6 animate-spin" />
-                </div>
-              ) : sessions.length === 0 ? (
+              {sessions.length === 0 ? (
                 <p className="text-sm text-muted-foreground text-center py-8">
                   No active tracking sessions
                 </p>
@@ -429,7 +430,7 @@ function ServiceAreasSection() {
   const [statusFilter, setStatusFilter] = useState<string>("all");
   const [selectedZone, setSelectedZone] = useState<ServiceZone | null>(null);
 
-  const { data: zones = [] } = useQuery({
+  const { data: zones = [], isLoading } = useQuery({
     queryKey: ["admin_service_zones", searchTerm, zoneTypeFilter, statusFilter],
     queryFn: async () => {
       try {
@@ -474,6 +475,10 @@ function ServiceAreasSection() {
   const handleZoneClick = useCallback((zone: ServiceZone) => {
     setSelectedZone(zone);
   }, []);
+
+  if (isLoading) {
+    return <AdminServiceAreasSkeleton />;
+  }
 
   return (
     <div className="space-y-4">

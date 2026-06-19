@@ -45,9 +45,9 @@ export function ProviderReviewsManager({ businessId }: ProviderReviewsManagerPro
     };
   }, [reviews]);
 
-  const getServiceName = (serviceId: number) => {
-    const service = services.find((s: Service) => s.id === serviceId);
-    return service?.name || `Service ${serviceId}`;
+  const getServiceName = (serviceId: number | string) => {
+    const service = services.find((s: any) => s.id == serviceId);
+    return service?.title || service?.name || `Service ${serviceId}`;
   };
 
   const renderStars = (rating: number, size: "sm" | "md" = "md") => {
@@ -79,7 +79,7 @@ export function ProviderReviewsManager({ businessId }: ProviderReviewsManagerPro
       {/* Stats Cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
         {/* Average Rating */}
-        <Card className="bg-gradient-to-br from-yellow-50 to-amber-50 dark:from-yellow-950/20 dark:to-amber-950/20 border-yellow-200 dark:border-yellow-800">
+        <Card className="bg-gradient-to-br from-yellow-100 to-amber-50 dark:from-yellow-500/20 dark:to-amber-500/5 border-yellow-200 dark:border-yellow-500/30">
           <CardHeader className="pb-3">
             <CardTitle className="text-sm font-medium text-yellow-700 dark:text-yellow-400 flex items-center gap-2">
               <Star className="h-4 w-4" />
@@ -98,7 +98,7 @@ export function ProviderReviewsManager({ businessId }: ProviderReviewsManagerPro
         </Card>
 
         {/* Total Reviews */}
-        <Card className="bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-950/20 dark:to-indigo-950/20 border-blue-200 dark:border-blue-800">
+        <Card className="bg-gradient-to-br from-blue-100 to-indigo-50 dark:from-blue-500/20 dark:to-indigo-500/5 border-blue-200 dark:border-blue-500/30">
           <CardHeader className="pb-3">
             <CardTitle className="text-sm font-medium text-blue-700 dark:text-blue-400 flex items-center gap-2">
               <MessageSquare className="h-4 w-4" />
@@ -125,7 +125,7 @@ export function ProviderReviewsManager({ businessId }: ProviderReviewsManagerPro
         </Card>
 
         {/* Total Replies */}
-        <Card className="bg-gradient-to-br from-emerald-50 to-green-50 dark:from-emerald-950/20 dark:to-green-950/20 border-emerald-200 dark:border-emerald-800">
+        <Card className="bg-gradient-to-br from-emerald-100 to-teal-50 dark:from-emerald-500/20 dark:to-teal-500/5 border-emerald-200 dark:border-emerald-500/30">
           <CardHeader className="pb-3">
             <CardTitle className="text-sm font-medium text-emerald-700 dark:text-emerald-400 flex items-center gap-2">
               <TrendingUp className="h-4 w-4" />
@@ -147,7 +147,7 @@ export function ProviderReviewsManager({ businessId }: ProviderReviewsManagerPro
         </Card>
 
         {/* Response Rate Goal */}
-        <Card className="bg-gradient-to-br from-purple-50 to-violet-50 dark:from-purple-950/20 dark:to-violet-950/20 border-purple-200 dark:border-purple-800">
+        <Card className="bg-gradient-to-br from-purple-100 to-fuchsia-50 dark:from-purple-500/20 dark:to-fuchsia-500/5 border-purple-200 dark:border-purple-500/30">
           <CardHeader className="pb-3">
             <CardTitle className="text-sm font-medium text-purple-700 dark:text-purple-400 flex items-center gap-2">
               <Filter className="h-4 w-4" />

@@ -362,33 +362,39 @@ export default function CustomerServicesPage() {
 
         {/* "Use my location" banner */}
         {!nearMeActive && !locationDismissed && (
-          <div className="mb-4 flex items-center gap-3 rounded-lg border border-blue-200 bg-blue-50 dark:border-blue-900 dark:bg-blue-950/30 px-4 py-3">
-            <Navigation className="h-5 w-5 text-blue-600 dark:text-blue-400 shrink-0" />
-            <div className="flex-1 min-w-0">
-              <p className="text-sm font-medium text-blue-900 dark:text-blue-100">
-                Find services near you
-              </p>
-              <p className="text-xs text-blue-700 dark:text-blue-300">
-                Allow location access to see nearby providers and distances
-              </p>
+          <div className="mb-4 flex flex-col sm:flex-row sm:items-center gap-3 rounded-lg border border-blue-200 bg-blue-50 dark:border-blue-900 dark:bg-blue-950/30 px-4 py-3 relative">
+            <div className="flex items-start sm:items-center gap-3 flex-1 min-w-0 pr-6 sm:pr-0">
+              <Navigation className="h-5 w-5 text-blue-600 dark:text-blue-400 shrink-0 mt-0.5 sm:mt-0" />
+              <div className="flex-1 min-w-0">
+                <p className="text-sm font-medium text-blue-900 dark:text-blue-100">
+                  Find services near you
+                </p>
+                <p className="text-xs text-blue-700 dark:text-blue-300">
+                  Allow location access to see nearby providers and distances
+                </p>
+              </div>
             </div>
-            <Button
-              size="sm"
-              variant="default"
-              onClick={handleUseMyLocation}
-              disabled={isLocating}
-              className="shrink-0 bg-blue-600 hover:bg-blue-700"
-            >
-              {isLocating ? (
-                <Loader2 className="h-4 w-4 mr-1.5 animate-spin" />
-              ) : (
-                <Navigation className="h-4 w-4 mr-1.5" />
-              )}
-              Use my location
-            </Button>
+            
+            <div className="flex shrink-0 ml-8 sm:ml-0 mt-2 sm:mt-0">
+              <Button
+                size="sm"
+                variant="default"
+                onClick={handleUseMyLocation}
+                disabled={isLocating}
+                className="w-full sm:w-auto bg-blue-600 hover:bg-blue-700"
+              >
+                {isLocating ? (
+                  <Loader2 className="h-4 w-4 mr-1.5 animate-spin" />
+                ) : (
+                  <Navigation className="h-4 w-4 mr-1.5" />
+                )}
+                Use my location
+              </Button>
+            </div>
+
             <button
               onClick={() => setLocationDismissed(true)}
-              className="text-blue-400 hover:text-blue-600 p-1"
+              className="absolute top-2 right-2 sm:static sm:top-auto sm:right-auto text-blue-400 hover:text-blue-600 p-1 shrink-0"
               aria-label="Dismiss location banner"
             >
               <X className="h-4 w-4" />

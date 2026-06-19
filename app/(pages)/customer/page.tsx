@@ -237,7 +237,7 @@ export default function CustomerDashboardPage() {
 
       {/* Quick Stats */}
       <div className="grid gap-4 md:grid-cols-4" data-tour-stats-grid="">
-        <Card className="bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-950/20 dark:to-indigo-950/20 border-blue-200 dark:border-blue-800">
+        <Card className="bg-gradient-to-br from-blue-100 to-indigo-50 dark:from-blue-500/20 dark:to-indigo-500/5 border-blue-200 dark:border-blue-500/30">
           <CardHeader className="flex flex-row items-center justify-between pb-2">
             <CardTitle className="text-sm font-medium text-blue-700 dark:text-blue-400">
               Total Bookings
@@ -252,7 +252,7 @@ export default function CustomerDashboardPage() {
           </CardContent>
         </Card>
 
-        <Card className="bg-gradient-to-br from-red-50 to-rose-50 dark:from-red-950/20 dark:to-rose-950/20 border-red-200 dark:border-red-800">
+        <Card className="bg-gradient-to-br from-rose-100 to-pink-50 dark:from-rose-500/20 dark:to-pink-500/5 border-rose-200 dark:border-rose-500/30">
           <CardHeader className="flex flex-row items-center justify-between pb-2">
             <CardTitle className="text-sm font-medium text-red-700 dark:text-red-400">
               Cancelled
@@ -267,7 +267,7 @@ export default function CustomerDashboardPage() {
           </CardContent>
         </Card>
 
-        <Card className="bg-gradient-to-br from-emerald-50 to-green-50 dark:from-emerald-950/20 dark:to-green-950/20 border-emerald-200 dark:border-emerald-800">
+        <Card className="bg-gradient-to-br from-emerald-100 to-teal-50 dark:from-emerald-500/20 dark:to-teal-500/5 border-emerald-200 dark:border-emerald-500/30">
           <CardHeader className="flex flex-row items-center justify-between pb-2">
             <CardTitle className="text-sm font-medium text-emerald-700 dark:text-emerald-400">
               Completed
@@ -284,7 +284,7 @@ export default function CustomerDashboardPage() {
           </CardContent>
         </Card>
 
-        <Card className="bg-gradient-to-br from-violet-50 to-purple-50 dark:from-violet-950/20 dark:to-purple-950/20 border-violet-200 dark:border-violet-800">
+        <Card className="bg-gradient-to-br from-purple-100 to-fuchsia-50 dark:from-purple-500/20 dark:to-fuchsia-500/5 border-purple-200 dark:border-purple-500/30">
           <CardHeader className="flex flex-row items-center justify-between pb-2">
             <CardTitle className="text-sm font-medium text-violet-700 dark:text-violet-400">
               Upcoming
@@ -633,7 +633,7 @@ export default function CustomerDashboardPage() {
       </div>
 
       {/* Trust Badges */}
-      <Card className="bg-gradient-to-r from-indigo-50 via-purple-50 to-blue-50 dark:from-indigo-950/20 dark:via-purple-950/20 dark:to-blue-950/20 border-indigo-200/50 dark:border-indigo-800/50">
+      <Card className="bg-gradient-to-r from-indigo-100 via-purple-50 to-blue-50 dark:from-indigo-500/10 dark:via-purple-500/10 dark:to-blue-500/10 border-indigo-200/50 dark:border-indigo-500/20">
         <CardContent className="py-6">
           <div className="grid gap-6 md:grid-cols-3">
             <div className="flex items-center gap-4">

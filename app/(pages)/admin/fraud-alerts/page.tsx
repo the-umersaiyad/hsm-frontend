@@ -26,6 +26,7 @@ import {
   DialogTitle,
   DialogFooter,
 } from "@/components/ui/dialog";
+import { AdminFraudAlertsSkeleton } from "@/components/admin/skeletons";
 
 interface FraudFlag {
   id: number;
@@ -112,6 +113,11 @@ export default function AdminFraudAlertsPage() {
   };
 
   const unresolvedFlags = flags.filter((f) => !f.isResolved);
+  const resolvedFlags = flags.filter((f) => f.isResolved);
+
+  if (isLoading) {
+    return <AdminFraudAlertsSkeleton />;
+  }
 
   return (
     <div className="space-y-6">
@@ -149,11 +155,7 @@ export default function AdminFraudAlertsPage() {
           <CardTitle>Unresolved Fraud Flags</CardTitle>
         </CardHeader>
         <CardContent>
-          {isLoading ? (
-            <div className="flex items-center justify-center py-12">
-              <Loader2 className="h-8 w-8 animate-spin" />
-            </div>
-          ) : unresolvedFlags.length === 0 ? (
+          {unresolvedFlags.length === 0 ? (
             <div className="text-center py-12 text-muted-foreground">
               <CheckCircle className="h-12 w-12 mx-auto mb-4 text-green-500 opacity-50" />
               <p>No unresolved fraud flags</p>

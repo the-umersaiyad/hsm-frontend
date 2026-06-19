@@ -120,7 +120,7 @@ export default function ProviderStaffPayoutsPage() {
 
       {/* Summary Cards */}
       <div className="grid gap-4 md:grid-cols-3" data-tour-provider-payout-summary>
-        <Card className="bg-gradient-to-br from-amber-50 to-orange-50 dark:from-amber-950/20 dark:to-orange-950/20 border-amber-200 dark:border-amber-800">
+        <Card className="bg-gradient-to-br from-orange-100 to-amber-50 dark:from-orange-500/20 dark:to-amber-500/5 border-orange-200 dark:border-orange-500/30">
           <CardContent className="p-6">
             <div className="flex items-center justify-between">
               <div>
@@ -139,7 +139,7 @@ export default function ProviderStaffPayoutsPage() {
           </CardContent>
         </Card>
 
-        <Card className="bg-gradient-to-br from-emerald-50 to-green-50 dark:from-emerald-950/20 dark:to-green-950/20 border-emerald-200 dark:border-emerald-800">
+        <Card className="bg-gradient-to-br from-emerald-100 to-teal-50 dark:from-emerald-500/20 dark:to-teal-500/5 border-emerald-200 dark:border-emerald-500/30">
           <CardContent className="p-6">
             <div className="flex items-center justify-between">
               <div>
@@ -158,7 +158,7 @@ export default function ProviderStaffPayoutsPage() {
           </CardContent>
         </Card>
 
-        <Card className="bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-950/20 dark:to-indigo-950/20 border-blue-200 dark:border-blue-800">
+        <Card className="bg-gradient-to-br from-blue-100 to-indigo-50 dark:from-blue-500/20 dark:to-indigo-500/5 border-blue-200 dark:border-blue-500/30">
           <CardContent className="p-6">
             <div className="flex items-center justify-between">
               <div>

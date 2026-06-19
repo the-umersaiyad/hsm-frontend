@@ -127,7 +127,7 @@ export function SupportClient() {
 
       <div className="grid md:grid-cols-3 gap-6">
         {/* Form Section */}
-        <div className="md:col-span-1">
+        <div className="md:col-span-1 min-w-0">
           <Card>
             <CardHeader>
               <CardTitle>Submit a Ticket</CardTitle>
@@ -248,7 +248,7 @@ export function SupportClient() {
         </div>
 
         {/* Tickets List Section */}
-        <div className="md:col-span-2">
+        <div className="md:col-span-2 min-w-0">
           <Card className="h-full">
             <CardHeader>
               <CardTitle>My Tickets</CardTitle>
@@ -266,8 +266,8 @@ export function SupportClient() {
                   <p className="text-sm text-muted-foreground">When you submit a support ticket, it will appear here.</p>
                 </div>
               ) : (
-                <div className="border rounded-md">
-                  <Table>
+                <div className="border rounded-md overflow-x-auto">
+                  <Table className="min-w-full">
                     <TableHeader>
                       <TableRow>
                         <TableHead>Ticket ID</TableHead>

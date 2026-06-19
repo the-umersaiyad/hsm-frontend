@@ -121,7 +121,7 @@ function PricingCard({
   if (planNameUpper === "PRO") {
     topBadge = (
       <div className="absolute -top-3 left-1/2 -translate-x-1/2 z-10">
-        <span className="bg-[#E6E6FA] text-[#483D8B] px-3 py-1 rounded-full text-xs font-medium border border-[#D8BFD8]/50 shadow-sm">
+        <span className="bg-[#E6E6FA] dark:bg-indigo-500/20 text-[#483D8B] dark:text-indigo-300 px-3 py-1 rounded-full text-xs font-medium border border-[#D8BFD8]/50 dark:border-indigo-500/30 shadow-sm">
           Most popular
         </span>
       </div>
@@ -129,7 +129,7 @@ function PricingCard({
   } else if (planNameUpper === "PREMIUM") {
     topBadge = (
       <div className="absolute -top-3 left-1/2 -translate-x-1/2 z-10">
-        <span className="bg-[#FDF5E6] text-[#8B4513] px-3 py-1 rounded-full text-xs font-medium border border-[#FFE4B5]/50 shadow-sm">
+        <span className="bg-[#FDF5E6] dark:bg-amber-500/20 text-[#8B4513] dark:text-amber-300 px-3 py-1 rounded-full text-xs font-medium border border-[#FFE4B5]/50 dark:border-amber-500/30 shadow-sm">
           Best value
         </span>
       </div>
@@ -220,11 +220,11 @@ function PricingCard({
               </span>
             </div>
             <div className="h-4">
-              {plan.yearlyPrice > plan.monthlyPrice && (
+              {plan.yearlyPrice < plan.monthlyPrice * 12 && (
                 <p className="text-[13px] text-zinc-500 dark:text-zinc-400">
                   Yearly ₹{plan.yearlyPrice / 100}{" "}
                   <span className="text-green-600 dark:text-green-500 ml-1">
-                    Save ₹{(plan.yearlyPrice - plan.monthlyPrice * 12) / 100}
+                    Save ₹{(plan.monthlyPrice * 12 - plan.yearlyPrice) / 100}
                   </span>
                 </p>
               )}
@@ -344,7 +344,7 @@ function PricingCard({
             {hasTrial && isTrialEligible && (
               <Button
                 onClick={() => onStartTrial?.(plan.id)}
-                className="w-full bg-zinc-900 dark:bg-[#353535] text-white hover:bg-zinc-800 dark:hover:bg-[#404040] border border-transparent dark:border-zinc-700 shadow-md dark:shadow-none"
+                className="w-full"
               >
                 Start free trial
               </Button>
@@ -357,7 +357,7 @@ function PricingCard({
                   onBuyNow?.(plan, billingCycle);
                 }
               }}
-              className="w-full bg-zinc-900 dark:bg-[#353535] text-white hover:bg-zinc-800 dark:hover:bg-[#404040] border border-transparent dark:border-zinc-700 shadow-md dark:shadow-none"
+              className="w-full"
               data-tour-provider-plan-cta
             >
               {isUpgrade ? "Upgrade" : "Buy now"}
@@ -644,7 +644,7 @@ export default function ProviderSubscriptionPage() {
       {/* Current Subscription Banner */}
       {subscription && (
         <Alert 
-          className="border-purple-200 bg-purple-50"
+          className="border-primary/20 bg-primary/5 dark:border-primary/30 dark:bg-primary/10"
           data-tour-provider-sub-current-banner
         >
           <AlertDescription className="flex items-center justify-between">

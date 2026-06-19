@@ -301,7 +301,7 @@ export default function ProviderStaffLeavePage() {
 
       {/* Summary Cards */}
       <div className="grid gap-4 md:grid-cols-4" data-tour-provider-leave-summary-cards>
-        <Card className="bg-amber-50 dark:bg-amber-950/20 border-amber-200 dark:border-amber-800">
+        <Card className="bg-gradient-to-br from-yellow-100 to-amber-50 dark:from-yellow-500/20 dark:to-amber-500/5 border-yellow-200 dark:border-yellow-500/30">
           <CardContent className="p-4">
             <div className="flex items-center justify-between">
               <div>
@@ -317,7 +317,7 @@ export default function ProviderStaffLeavePage() {
           </CardContent>
         </Card>
 
-        <Card className="bg-emerald-50 dark:bg-emerald-950/20 border-emerald-200 dark:border-emerald-800">
+        <Card className="bg-gradient-to-br from-emerald-100 to-teal-50 dark:from-emerald-500/20 dark:to-teal-500/5 border-emerald-200 dark:border-emerald-500/30">
           <CardContent className="p-4">
             <div className="flex items-center justify-between">
               <div>
@@ -333,7 +333,7 @@ export default function ProviderStaffLeavePage() {
           </CardContent>
         </Card>
 
-        <Card className="bg-rose-50 dark:bg-rose-950/20 border-rose-200 dark:border-rose-800">
+        <Card className="bg-gradient-to-br from-rose-100 to-pink-50 dark:from-rose-500/20 dark:to-pink-500/5 border-rose-200 dark:border-rose-500/30">
           <CardContent className="p-4">
             <div className="flex items-center justify-between">
               <div>
@@ -349,7 +349,7 @@ export default function ProviderStaffLeavePage() {
           </CardContent>
         </Card>
 
-        <Card className="bg-blue-50 dark:bg-blue-950/20 border-blue-200 dark:border-blue-800">
+        <Card className="bg-gradient-to-br from-blue-100 to-indigo-50 dark:from-blue-500/20 dark:to-indigo-500/5 border-blue-200 dark:border-blue-500/30">
           <CardContent className="p-4">
             <div className="flex items-center justify-between">
               <div>
@@ -404,24 +404,25 @@ export default function ProviderStaffLeavePage() {
         </CardContent>
       </Card>
 
-      {/* Leave Requests Table */}
-      <Card className="p-0">
-        <CardContent className="p-0">
-          {isLoading ? (
-            <div className="flex items-center justify-center py-12">
-              <RefreshCw className="h-8 w-8 animate-spin text-muted-foreground" />
-            </div>
-          ) : filteredRequests.length === 0 ? (
-            <div className="text-center py-12">
-              <Calendar className="h-12 w-12 text-muted-foreground mx-auto mb-4" />
-              <p className="text-muted-foreground">
-                {searchTerm || statusFilter !== "all"
-                  ? "No leave requests match your filters"
-                  : "No leave requests found"}
-              </p>
-            </div>
-          ) : (
-            <div className="border rounded-md overflow-hidden bg-card shadow-sm">
+      {/* Leave Requests Table Section */}
+      <div className="space-y-4 mt-6">
+        {isLoading ? (
+          <div className="flex items-center justify-center py-12">
+            <RefreshCw className="h-8 w-8 animate-spin text-muted-foreground" />
+          </div>
+        ) : filteredRequests.length === 0 ? (
+          <div className="flex flex-col items-center justify-center rounded-xl border border-dashed bg-muted/30 p-12 text-center">
+            <Calendar className="h-12 w-12 text-muted-foreground mx-auto mb-4 opacity-50" />
+            <h3 className="text-lg font-semibold">No leave requests found</h3>
+            <p className="text-sm text-muted-foreground mt-2 max-w-md">
+              {searchTerm || statusFilter !== "all"
+                ? "No leave requests match your filters"
+                : "Your staff hasn't submitted any leave requests yet."}
+            </p>
+          </div>
+        ) : (
+          <div className="border rounded-md overflow-hidden bg-card shadow-sm">
+            <div className="w-full overflow-x-auto">
               <Table>
                 <TableHeader>
                   <TableRow className="bg-muted/50 hover:bg-muted/50">
@@ -442,7 +443,6 @@ export default function ProviderStaffLeavePage() {
                     return (
                       <TableRow
                         key={request.id}
-                        className="hover:bg-muted/50 transition-colors border-b last:border-b-0"
                       >
                         <TableCell className="py-4 px-4">
                           <div className="flex items-center gap-3">
@@ -598,9 +598,9 @@ export default function ProviderStaffLeavePage() {
                 </TableBody>
               </Table>
             </div>
-          )}
-        </CardContent>
-      </Card>
+          </div>
+        )}
+      </div>
 
       {/* Action Confirmation Dialog */}
       <AlertDialog open={actionDialogOpen} onOpenChange={setActionDialogOpen}>

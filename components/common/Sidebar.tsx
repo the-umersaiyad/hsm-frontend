@@ -8,7 +8,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { HeaderUser } from "./Header";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
-import { ScrollArea } from "@/components/ui/scroll-area";
+// Removed ScrollArea import to use native div with hidden scrollbars
 import { Separator } from "@/components/ui/separator";
 import {
   DropdownMenu,
@@ -218,7 +218,7 @@ export function Sidebar({
         </div>
 
         {/* Nav */}
-        <ScrollArea className="flex-1 py-3 min-h-0">
+        <div className="flex-1 overflow-y-auto py-3 min-h-0 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
           <nav
             className={cn("flex flex-col gap-1", collapsed ? "px-2" : "px-3")}
           >
@@ -232,7 +232,7 @@ export function Sidebar({
               />
             ))}
           </nav>
-        </ScrollArea>
+        </div>
 
         {/* Bottom items */}
         {bottomItems && bottomItems.length > 0 && (

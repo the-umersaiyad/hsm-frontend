@@ -122,7 +122,7 @@ export default function ProviderBusinessPage() {
       {/* Stats Overview */}
       {stats && (
         <div className="grid gap-4 md:grid-cols-4">
-          <Card className="bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-950/20 dark:to-indigo-950/20 border-blue-200 dark:border-blue-800">
+          <Card className="bg-gradient-to-br from-blue-100 to-indigo-50 dark:from-blue-500/20 dark:to-indigo-500/5 border-blue-200 dark:border-blue-500/30">
             <CardContent className="p-6">
               <div className="flex items-center gap-4">
                 <div className="flex h-12 w-12 items-center justify-center rounded-md bg-blue-100 dark:bg-blue-900/30">
@@ -140,7 +140,7 @@ export default function ProviderBusinessPage() {
             </CardContent>
           </Card>
 
-          <Card className="bg-gradient-to-br from-orange-50 to-amber-50 dark:from-orange-950/20 dark:to-amber-950/20 border-orange-200 dark:border-orange-800">
+          <Card className="bg-gradient-to-br from-orange-100 to-amber-50 dark:from-orange-500/20 dark:to-amber-500/5 border-orange-200 dark:border-orange-500/30">
             <CardContent className="p-6">
               <div className="flex items-center gap-4">
                 <div className="flex h-12 w-12 items-center justify-center rounded-md bg-orange-100 dark:bg-orange-900/30">
@@ -158,7 +158,7 @@ export default function ProviderBusinessPage() {
             </CardContent>
           </Card>
 
-          <Card className="bg-gradient-to-br from-emerald-50 to-green-50 dark:from-emerald-950/20 dark:to-green-950/20 border-emerald-200 dark:border-emerald-800">
+          <Card className="bg-gradient-to-br from-emerald-100 to-teal-50 dark:from-emerald-500/20 dark:to-teal-500/5 border-emerald-200 dark:border-emerald-500/30">
             <CardContent className="p-6">
               <div className="flex items-center gap-4">
                 <div className="flex h-12 w-12 items-center justify-center rounded-md bg-emerald-100 dark:bg-emerald-900/30">
@@ -176,7 +176,7 @@ export default function ProviderBusinessPage() {
             </CardContent>
           </Card>
 
-          <Card className="bg-gradient-to-br from-yellow-50 to-amber-50 dark:from-yellow-950/20 dark:to-amber-950/20 border-yellow-200 dark:border-yellow-800">
+          <Card className="bg-gradient-to-br from-yellow-100 to-amber-50 dark:from-yellow-500/20 dark:to-amber-500/5 border-yellow-200 dark:border-yellow-500/30">
             <CardContent className="p-6">
               <div className="flex items-center gap-4">
                 <div className="flex h-12 w-12 items-center justify-center rounded-md bg-yellow-100 dark:bg-yellow-900/30">

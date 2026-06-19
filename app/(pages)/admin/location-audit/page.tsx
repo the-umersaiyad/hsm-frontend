@@ -25,6 +25,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { AdminLocationAuditSkeleton } from "@/components/admin/skeletons";
 
 interface AuditLog {
   id: number;
@@ -78,6 +79,10 @@ export default function AdminLocationAuditPage() {
       return api.get<AuditLogsResponse>(`/admin/location-audit-logs?${params.toString()}`);
     },
   });
+
+  if (isLoading) {
+    return <AdminLocationAuditSkeleton />;
+  }
 
   const logs = (data?.logs || []).map((log: any) => ({
     id: log.id,
@@ -198,11 +203,7 @@ export default function AdminLocationAuditPage() {
           </CardTitle>
         </CardHeader>
         <CardContent>
-          {isLoading ? (
-            <div className="flex items-center justify-center py-12">
-              <Loader2 className="h-8 w-8 animate-spin" />
-            </div>
-          ) : logs.length === 0 ? (
+          {logs.length === 0 ? (
             <div className="text-center py-12 text-muted-foreground">
               <AlertCircle className="h-12 w-12 mx-auto mb-4 opacity-50" />
               <p>No audit logs found</p>

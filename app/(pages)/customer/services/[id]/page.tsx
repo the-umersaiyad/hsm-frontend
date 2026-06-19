@@ -116,6 +116,25 @@ export default function ServiceDetailsPage({
   const carouselRef = useRef<HTMLDivElement>(null);
   const [reviewsPerView, setReviewsPerView] = useState(3);
 
+  // Update reviews per view based on window width
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth < 640) {
+        setReviewsPerView(1);
+      } else if (window.innerWidth < 1024) {
+        setReviewsPerView(2);
+      } else {
+        setReviewsPerView(3);
+      }
+    };
+    
+    // Initial check
+    handleResize();
+    
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   // Initial fetch when service loads
   useEffect(() => {
     if (service?.provider?.id && selectedDate) {
@@ -500,7 +519,7 @@ export default function ServiceDetailsPage({
           service && (
             <div className="grid lg:grid-cols-3 gap-6 lg:gap-8">
               {/* LEFT COLUMN - Service Details */}
-              <div className="lg:col-span-2 space-y-6">
+              <div className="lg:col-span-2 space-y-6 min-w-0">
                 {/* Hero Banner Section - Image with Info Overlay */}
                 <section>
                   <div className="relative w-full aspect-[21/9] rounded-md overflow-hidden bg-gradient-to-br from-primary/10 via-primary/5 to-background border">
@@ -693,7 +712,7 @@ export default function ServiceDetailsPage({
                           >
                             <div
                               ref={carouselRef}
-                              className="flex gap-4 transition-transform duration-500 ease-in-out"
+                              className="flex transition-transform duration-500 ease-in-out"
                               style={{
                                 transform: `translateX(-${currentReviewIndex * (100 / reviewsPerView)}%)`,
                               }}

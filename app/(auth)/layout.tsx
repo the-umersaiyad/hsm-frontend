@@ -16,8 +16,8 @@ export default function AuthLayout({
           className="object-cover"
           priority
         />
-        {/* Gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-r from-primary/90 via-primary/60 to-transparent" />
+        {/* Gradient overlay (Neutral to preserve text readability) */}
+        <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/40 to-transparent" />
         {/* Content overlay */}
         <div className="absolute inset-0 flex flex-col justify-between p-12 text-white">
           <div className="flex items-center gap-3">

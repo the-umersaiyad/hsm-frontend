@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import * as React from "react";
 import { useRouter } from "next/navigation";
 import { RefreshCw, Plus, Clock, Trash2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -8,6 +9,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Switch } from "@/components/ui/switch";
 import { Calendar } from "@/components/ui/calendar";
+import { Skeleton } from "@/components/ui/skeleton";
 import { toast } from "sonner";
 import { SlotDialog } from "@/components/provider/availability/SlotDialog";
 import { AvailabilitySkeleton } from "@/components/provider/skeletons/AvailabilitySkeleton";
@@ -41,6 +43,11 @@ export default function ProviderAvailabilityPage() {
 
   // Daily availability state
   const [selectedDate, setSelectedDate] = useState<Date | undefined>(undefined);
+
+  // Set today's date by default on mount
+  React.useEffect(() => {
+    setSelectedDate(new Date());
+  }, []);
 
   // Fetch business profile
   const { business, isLoading: isLoadingBusiness } = useProviderBusinessProfile(
@@ -236,18 +243,21 @@ export default function ProviderAvailabilityPage() {
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           {/* Left: Calendar */}
-          <Card className="flex items-center justify-center p-4">
-            <Calendar
-              mode="single"
-              selected={selectedDate}
-              onSelect={setSelectedDate}
-              disabled={(date) => {
-                const today = new Date();
-                today.setHours(0, 0, 0, 0);
-                return date < today;
-              }}
-            />
-          </Card>
+          <div className="flex justify-center lg:justify-start h-fit">
+            <Card className="p-3 sm:p-5 inline-block w-fit shadow-sm border-zinc-200 dark:border-zinc-800">
+              <Calendar
+                mode="single"
+                selected={selectedDate}
+                onSelect={setSelectedDate}
+                disabled={(date) => {
+                  const today = new Date();
+                  today.setHours(0, 0, 0, 0);
+                  return date < today;
+                }}
+                className="rounded-md [--cell-size:2.5rem] sm:[--cell-size:3rem] [&_.rdp-caption_label]:text-lg"
+              />
+            </Card>
+          </div>
 
           {/* Right: Slot grid for selected date */}
           <div className="lg:col-span-2">
@@ -286,7 +296,11 @@ export default function ProviderAvailabilityPage() {
                 </CardHeader>
                 <CardContent>
                   {availabilityQuery.isLoading ? (
-                    <p className="text-sm text-muted-foreground">Loading slots...</p>
+                    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
+                      {Array.from({ length: 8 }).map((_, i) => (
+                        <Skeleton key={i} className="h-[46px] w-full rounded-md" />
+                      ))}
+                    </div>
                   ) : slotsForDate.length === 0 ? (
                     <p className="text-sm text-muted-foreground">
                       No time slots configured. Add slots above first.
@@ -343,7 +357,7 @@ function SlotCard({
   return (
     <Card className="rounded-sm">
       <div className="p-0">
-        <div className="flex items-center justify-around gap-0">
+        <div className="flex items-center justify-around gap-0 px-3 py-2">
           <span className="text-base font-semibold">
             {formatTime12Hour(slot.startTime)}
           </span>

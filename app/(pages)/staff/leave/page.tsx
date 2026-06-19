@@ -330,25 +330,26 @@ export default function StaffLeavePage() {
         </Card>
       )}
 
-      {/* Leave History Table */}
-      <Card className="p-0 pt-5">
-        <CardHeader>
-          <CardTitle>Leave History</CardTitle>
-          <CardDescription>
+      {/* Leave History Table Section */}
+      <div className="space-y-4">
+        <div>
+          <h2 className="text-lg font-semibold tracking-tight">Leave History</h2>
+          <p className="text-sm text-muted-foreground">
             Your past and current leave requests
-          </CardDescription>
-        </CardHeader>
-        <CardContent className="p-0">
-          {leaveHistory.length === 0 ? (
-            <div className="text-center py-12 text-muted-foreground">
-              <Calendar className="h-12 w-12 mx-auto mb-4 opacity-50" />
-              <p>No leave history</p>
-              <p className="text-sm">
-                Request your first leave using the button above
-              </p>
-            </div>
-          ) : (
-            <div className="border rounded-md overflow-hidden bg-card shadow-sm">
+          </p>
+        </div>
+
+        {leaveHistory.length === 0 ? (
+          <div className="flex flex-col items-center justify-center rounded-xl border border-dashed bg-muted/30 p-12 text-center">
+            <Calendar className="h-12 w-12 text-muted-foreground mx-auto mb-4 opacity-50" />
+            <h3 className="text-lg font-semibold">No leave history</h3>
+            <p className="text-sm text-muted-foreground mt-2 max-w-md">
+              Request your first leave using the button above
+            </p>
+          </div>
+        ) : (
+          <div className="border rounded-md overflow-hidden bg-card shadow-sm">
+            <div className="w-full overflow-x-auto">
               <Table>
                 <TableHeader>
                   <TableRow className="bg-muted/50 hover:bg-muted/50">
@@ -372,7 +373,6 @@ export default function StaffLeavePage() {
                     return (
                       <TableRow
                         key={leave.id}
-                        className="hover:bg-muted/50 transition-colors border-b last:border-b-0"
                       >
                         <TableCell className="py-4 px-4">
                           <div className="flex items-center gap-2 text-sm">
@@ -463,9 +463,9 @@ export default function StaffLeavePage() {
                 </TableBody>
               </Table>
             </div>
-          )}
-        </CardContent>
-      </Card>
+          </div>
+        )}
+      </div>
     </div>
   );
 }

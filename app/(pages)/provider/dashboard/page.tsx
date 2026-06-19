@@ -153,7 +153,7 @@ export default function ProviderDashboardPage() {
       {/* Stats Grid */}
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
         <Card 
-          className="bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-950/20 dark:to-indigo-950/20 border-blue-200 dark:border-blue-800"
+          className="bg-gradient-to-br from-blue-100 to-indigo-50 dark:from-blue-500/20 dark:to-indigo-500/5 border-blue-200 dark:border-blue-500/30"
           data-tour-provider-stat-total-bookings
         >
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
@@ -173,7 +173,7 @@ export default function ProviderDashboardPage() {
         </Card>
 
         <Card 
-          className="bg-gradient-to-br from-orange-50 to-amber-50 dark:from-orange-950/20 dark:to-amber-950/20 border-orange-200 dark:border-orange-800"
+          className="bg-gradient-to-br from-orange-100 to-amber-50 dark:from-orange-500/20 dark:to-amber-500/5 border-orange-200 dark:border-orange-500/30"
           data-tour-provider-stat-today
         >
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
@@ -193,7 +193,7 @@ export default function ProviderDashboardPage() {
         </Card>
 
         <Card 
-          className="bg-gradient-to-br from-emerald-50 to-green-50 dark:from-emerald-950/20 dark:to-green-950/20 border-emerald-200 dark:border-emerald-800"
+          className="bg-gradient-to-br from-emerald-100 to-teal-50 dark:from-emerald-500/20 dark:to-teal-500/5 border-emerald-200 dark:border-emerald-500/30"
           data-tour-provider-stat-earnings
         >
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
@@ -226,7 +226,7 @@ export default function ProviderDashboardPage() {
         </Card>
 
         <Card 
-          className="bg-gradient-to-br from-yellow-50 to-amber-50 dark:from-yellow-950/20 dark:to-amber-950/20 border-yellow-200 dark:border-yellow-800"
+          className="bg-gradient-to-br from-yellow-100 to-amber-50 dark:from-yellow-500/20 dark:to-amber-500/5 border-yellow-200 dark:border-yellow-500/30"
           data-tour-provider-stat-rating
         >
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">

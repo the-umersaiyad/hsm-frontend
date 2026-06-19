@@ -27,6 +27,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { AdminCoverageAnalyticsSkeleton } from "@/components/admin/skeletons";
 
 interface HeatmapPoint {
   lat: number;
@@ -157,6 +158,10 @@ export default function AdminCoverageAnalyticsPage() {
     a.click();
     URL.revokeObjectURL(url);
   }, [heatmapPoints, dateFrom, dateTo]);
+
+  if (isLoading) {
+    return <AdminCoverageAnalyticsSkeleton />;
+  }
 
   return (
     <div className="space-y-6">

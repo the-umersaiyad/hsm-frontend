@@ -13,6 +13,7 @@ import { Badge } from "@/components/ui/badge";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogFooter } from "@/components/ui/dialog";
 import { Loader2, Search, Filter } from "lucide-react";
 import { api } from "@/lib/api";
+import { AdminSupportSkeleton } from "@/components/admin/skeletons";
 
 export function AdminSupportClient() {
   const [tickets, setTickets] = useState<any[]>([]);
@@ -132,46 +133,48 @@ export function AdminSupportClient() {
         </div>
       </div>
 
-      <Card>
-        <CardContent className="p-0">
-          {isLoading ? (
-            <div className="flex justify-center p-8">
-              <Loader2 className="h-8 w-8 animate-spin text-primary" />
-            </div>
-          ) : tickets.length === 0 ? (
-            <div className="text-center p-8 text-muted-foreground">
-              No tickets found.
-            </div>
-          ) : (
+      {isLoading ? (
+        <AdminSupportSkeleton />
+      ) : tickets.length === 0 ? (
+        <div className="flex flex-col items-center justify-center rounded-xl border border-dashed bg-muted/30 p-12 text-center">
+          <Search className="h-12 w-12 text-muted-foreground mx-auto mb-4 opacity-50" />
+          <h3 className="text-lg font-semibold">No tickets found</h3>
+          <p className="text-sm text-muted-foreground mt-2 max-w-md">
+            There are no support tickets matching your current filter.
+          </p>
+        </div>
+      ) : (
+        <div className="border rounded-md overflow-hidden bg-card shadow-sm">
+          <div className="w-full overflow-x-auto">
             <Table>
               <TableHeader>
-                <TableRow>
-                  <TableHead>Ticket ID</TableHead>
-                  <TableHead>User</TableHead>
-                  <TableHead>Subject</TableHead>
-                  <TableHead>Category</TableHead>
-                  <TableHead>Status</TableHead>
-                  <TableHead>Priority</TableHead>
-                  <TableHead>Created</TableHead>
-                  <TableHead className="text-right">Action</TableHead>
+                <TableRow className="bg-muted/50 hover:bg-muted/50">
+                  <TableHead className="py-4 px-4">Ticket ID</TableHead>
+                  <TableHead className="py-4 px-4">User</TableHead>
+                  <TableHead className="py-4 px-4">Subject</TableHead>
+                  <TableHead className="py-4 px-4">Category</TableHead>
+                  <TableHead className="py-4 px-4">Status</TableHead>
+                  <TableHead className="py-4 px-4">Priority</TableHead>
+                  <TableHead className="py-4 px-4">Created</TableHead>
+                  <TableHead className="py-4 px-4 text-right">Action</TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>
                 {tickets.map((ticket) => (
                   <TableRow key={ticket.id}>
-                    <TableCell className="font-medium">#{ticket.id}</TableCell>
-                    <TableCell>
+                    <TableCell className="font-medium py-4 px-4">#{ticket.id}</TableCell>
+                    <TableCell className="py-4 px-4">
                       <div>
                         <div className="font-medium">{ticket.userName}</div>
                         <div className="text-xs text-muted-foreground">{ticket.userEmail}</div>
                       </div>
                     </TableCell>
-                    <TableCell className="max-w-[200px] truncate">{ticket.subject}</TableCell>
-                    <TableCell>{ticket.category}</TableCell>
-                    <TableCell>{getStatusBadge(ticket.status)}</TableCell>
-                    <TableCell>{getPriorityBadge(ticket.priority)}</TableCell>
-                    <TableCell>{format(new Date(ticket.createdAt), "MMM d, yyyy")}</TableCell>
-                    <TableCell className="text-right">
+                    <TableCell className="max-w-[200px] truncate py-4 px-4">{ticket.subject}</TableCell>
+                    <TableCell className="py-4 px-4">{ticket.category}</TableCell>
+                    <TableCell className="py-4 px-4">{getStatusBadge(ticket.status)}</TableCell>
+                    <TableCell className="py-4 px-4">{getPriorityBadge(ticket.priority)}</TableCell>
+                    <TableCell className="py-4 px-4">{format(new Date(ticket.createdAt), "MMM d, yyyy")}</TableCell>
+                    <TableCell className="text-right py-4 px-4">
                       <Button variant="outline" size="sm" onClick={() => handleOpenTicket(ticket.id)}>
                         View
                       </Button>
@@ -180,9 +183,9 @@ export function AdminSupportClient() {
                 ))}
               </TableBody>
             </Table>
-          )}
-        </CardContent>
-      </Card>
+          </div>
+        </div>
+      )}
 
       <Dialog open={!!selectedTicket} onOpenChange={(open) => !open && setSelectedTicket(null)}>
         <DialogContent className="sm:max-w-[600px] max-h-[90vh] overflow-y-auto">
